@@ -1,0 +1,140 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #1a1a1a;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Container */
+.social-container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Button Styles */
+.social-btn {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    background: #fff;
+    border-radius: 50%;
+    text-decoration: none;
+    color: #333;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.social-btn svg {
+    width: 28px;
+    height: 28px;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+/* Tooltip Styles */
+.tooltip {
+    position: absolute;
+    top: -40px;
+    background: #fff;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    transform: translateY(10px);
+    white-space: nowrap;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.tooltip::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: #fff transparent transparent transparent;
+}
+
+.social-btn:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Hover Effects & Brand Colors */
+
+/* YouTube */
+.social-btn.youtube:hover {
+    background: #FF0000;
+    color: #fff;
+    box-shadow: 0 0 20px #FF0000;
+    transform: translateY(-5px);
+}
+.social-btn.youtube .tooltip {
+    color: #FF0000;
+}
+
+/* Instagram */
+.social-btn.instagram:hover {
+    background: #f09433; 
+    background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+    background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+    color: #fff;
+    box-shadow: 0 0 20px #dc2743;
+    transform: translateY(-5px);
+}
+.social-btn.instagram .tooltip {
+    color: #dc2743;
+}
+
+/* Twitter / X */
+.social-btn.twitter:hover {
+    background: #000;
+    color: #fff;
+    box-shadow: 0 0 20px #000;
+    transform: translateY(-5px);
+}
+.social-btn.twitter .tooltip {
+    color: #000;
+}
+
+/* GitHub */
+.social-btn.github:hover {
+    background: #333;
+    color: #fff;
+    box-shadow: 0 0 20px #333;
+    transform: translateY(-5px);
+}
+.social-btn.github .tooltip {
+    color: #333;
+}
+
+/* Icon Animation on Hover */
+.social-btn:hover svg {
+    transform: scale(1.2);
+}
