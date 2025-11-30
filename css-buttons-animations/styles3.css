@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #111;
+}
+
+.container {
+    display: flex;
+    gap: 30px;
+}
+
+.btn {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    background: #222;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    overflow: hidden;
+    transition: 0.5s;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.btn:hover {
+    box-shadow: 0 0 20px var(--color), 0 0 60px var(--color);
+    transform: translateY(-10px);
+}
+
+.btn .icon, .btn i {
+    position: relative;
+    z-index: 10;
+    font-size: 35px;
+    color: #555;
+    transition: 0.5s;
+}
+
+.btn:hover i {
+    color: #fff;
+    animation: shake 0.5s ease-in-out;
+}
+
+/* The Liquid Wave Effect */
+.btn .wave {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: var(--color);
+    left: 0;
+    top: 100%; /* Starts below the button */
+    border-radius: 40%;
+    transition: top 1s ease; /* Smooth filling */
+    animation: spin 4s infinite linear;
+    z-index: 1;
+    margin-left: -20px; /* Center the larger wave */
+}
+
+.btn:hover .wave {
+    top: -10%; /* Moves up to fill the button */
+}
+
+/* Animations */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes shake {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(-15deg); }
+    50% { transform: rotate(15deg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* Optional: Add a border ring that glows */
+.btn::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    z-index: 20;
+    transition: 0.5s;
+}
+
+.btn:hover::after {
+    border-color: rgba(255,255,255,0.5);
+}

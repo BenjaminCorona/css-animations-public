@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #222;
+    overflow: hidden;
+}
+
+.social-list {
+    position: relative;
+    display: flex;
+    gap: 25px;
+    transform-style: preserve-3d;
+    transform: rotate(-25deg) skew(25deg);
+}
+
+.social-list li {
+    position: relative;
+    list-style: none;
+    width: 60px;
+    height: 60px;
+    background: #fff;
+    transition: 0.5s;
+    box-shadow: -1px 1px 1px rgba(0,0,0,0.1);
+}
+
+.social-list li:hover {
+    transform: translate(20px, -20px);
+    box-shadow: -50px 50px 50px rgba(0,0,0,0.5);
+    background: var(--i);
+}
+
+.social-list li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: #333;
+    font-size: 30px;
+    transition: 0.5s;
+}
+
+.social-list li:hover a {
+    color: #fff;
+}
+
+/* The 3D Sides */
+.social-list li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -10px; /* Thickness of the block */
+    width: 10px;
+    height: 100%;
+    background: #ccc;
+    transform-origin: right;
+    transform: skewY(-45deg);
+    transition: 0.5s;
+}
+
+.social-list li:hover::before {
+    background: var(--j); /* Darker shade for depth */
+}
+
+.social-list li::after {
+    content: '';
+    position: absolute;
+    top: -10px; /* Thickness of the block */
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: #e6e6e6;
+    transform-origin: bottom;
+    transform: skewX(-45deg);
+    transition: 0.5s;
+}
+
+.social-list li:hover::after {
+    background: var(--i); /* Same color as top but slightly different lighting usually, here we use main color */
+    filter: brightness(0.9);
+}
+
+/* Tooltip / Title Effect */
+.social-list li .title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    color: #333;
+    font-size: 12px;
+    transition: 0.5s;
+    opacity: 0;
+    z-index: -1;
+    transform: translate(0, 0);
+    pointer-events: none;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Optional: Make the title pop out or replace the icon? 
+   Let's make a shadow effect or just keep the block rising.
+   Actually, let's keep it simple: The block rises.
+*/
