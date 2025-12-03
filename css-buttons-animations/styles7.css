@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #1a1a1a;
+}
+
+.container {
+    display: flex;
+    flex-direction: column; /* Stacked vertically looks very elegant for this style */
+    gap: 20px;
+}
+
+.btn {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 60px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    transition: width 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy effect */
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn:hover {
+    width: 200px;
+    background: var(--clr);
+    box-shadow: 0 0 20px var(--clr);
+    border-color: transparent;
+}
+
+/* Icon Container */
+.btn .icon-container {
+    position: absolute;
+    left: 0;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.btn i {
+    font-size: 24px;
+    transition: 0.3s;
+}
+
+/* Text */
+.btn .text {
+    position: absolute;
+    left: 60px; /* Start after the icon */
+    white-space: nowrap;
+    font-size: 16px;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: 0.4s;
+    transition-delay: 0.1s; /* Wait for width to expand a bit */
+}
+
+.btn:hover .text {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Shine Effect */
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: 0s;
+}
+
+.btn:hover::before {
+    left: 100%;
+    transition: 0.5s;
+    transition-delay: 0.2s; /* Shine passes after expansion */
+}
+
+/* Icon Animation on Hover */
+.btn:hover i {
+    transform: scale(1.2) rotate(360deg);
+    color: #fff;
+}
+
+/* Specific adjustments for white button (GitHub) */
+.btn[style*="#ffffff"]:hover {
+    color: #000;
+}
+.btn[style*="#ffffff"]:hover i {
+    color: #000;
+}

@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #000;
+}
+
+.container {
+    display: flex;
+    gap: 50px;
+}
+
+.btn {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    background: rgba(0,0,0,0.5);
+    overflow: hidden;
+    border-radius: 50%; /* Circular buttons */
+    transition: 0.5s;
+}
+
+/* The Rotating Gradient Border */
+.btn::before {
+    content: '';
+    position: absolute;
+    width: 150%; /* Larger than button to cover corners during rotation */
+    height: 150%;
+    background: conic-gradient(transparent, transparent, transparent, var(--clr));
+    animation: rotate 4s linear infinite;
+    /* Move the center of rotation to the center of the button */
+    top: -25%;
+    left: -25%;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    inset: 4px; /* Thickness of the border */
+    background: #101010; /* Inner background color */
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* The Icon */
+.btn i {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    font-size: 32px;
+    transition: 0.5s;
+}
+
+/* Hover Effects */
+.btn:hover::before {
+    animation: rotate 1.5s linear infinite; /* Speed up */
+    background: conic-gradient(var(--clr), var(--clr), var(--clr), var(--clr)); /* Full circle glow */
+}
+
+.btn:hover {
+    box-shadow: 0 0 10px var(--clr),
+                0 0 30px var(--clr),
+                0 0 60px var(--clr);
+    transform: scale(1.1);
+}
+
+/* Glitch Effect on Icon Hover */
+.btn:hover i {
+    animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+    color: var(--clr);
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(-2px, 2px);
+    }
+    40% {
+        transform: translate(-2px, -2px);
+    }
+    60% {
+        transform: translate(2px, 2px);
+    }
+    80% {
+        transform: translate(2px, -2px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}

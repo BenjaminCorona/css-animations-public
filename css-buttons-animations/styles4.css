@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Orbitron', sans-serif; /* Tech/Sci-fi font */
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #050505;
+}
+
+.loader-container {
+    display: flex;
+    gap: 40px;
+}
+
+.social-link {
+    position: relative;
+    text-decoration: none;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+}
+
+.social-link .layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    transform: rotate(-25deg) skew(25deg);
+    transition: 0.5s;
+}
+
+/* The Icon */
+.social-link .layer i {
+    font-size: 30px;
+    color: #fff;
+    transition: 0.5s;
+    z-index: 10; /* Keep icon on top */
+}
+
+/* The Stacked Layers */
+.social-link .layer span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color);
+    border-radius: 10px; /* Slightly rounded corners */
+    transition: 0.5s;
+    opacity: 0.2;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Hover Effects */
+.social-link:hover .layer {
+    transform: rotate(-25deg) skew(25deg) translate(10px, -10px);
+}
+
+/* Fan out the layers */
+.social-link:hover .layer span:nth-child(1) {
+    transform: translate(0, 0);
+    opacity: 0.2;
+}
+.social-link:hover .layer span:nth-child(2) {
+    transform: translate(10px, -10px);
+    opacity: 0.4;
+}
+.social-link:hover .layer span:nth-child(3) {
+    transform: translate(20px, -20px);
+    opacity: 0.6;
+}
+.social-link:hover .layer span:nth-child(4) {
+    transform: translate(30px, -30px);
+    opacity: 1; /* Top layer is solid */
+    box-shadow: -5px 5px 20px rgba(0,0,0,0.5);
+}
+
+/* Icon Movement */
+.social-link:hover .layer i {
+    transform: translate(30px, -30px); /* Move with the top layer */
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+/* Text Label */
+.social-link .text {
+    position: absolute;
+    bottom: -40px;
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 1px;
+    opacity: 0;
+    transition: 0.5s;
+    transform: translateY(-20px);
+    pointer-events: none;
+    text-transform: uppercase;
+}
+
+.social-link:hover .text {
+    opacity: 1;
+    transform: translateY(0);
+    color: var(--color);
+    text-shadow: 0 0 10px var(--color);
+}
+
+/* Glow Effect on Container */
+.social-link:hover {
+    z-index: 100; /* Bring to front */
+}
