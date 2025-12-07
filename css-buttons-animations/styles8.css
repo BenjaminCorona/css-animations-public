@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #111;
+}
+
+.accordion-container {
+    display: flex;
+    /* width: 600px;  Removed fixed width */
+    gap: 10px;
+}
+
+.social-card {
+    position: relative;
+    height: 80px;
+    width: 80px; /* Start as a perfect circle */
+    border-radius: 50px;
+    background: #222;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    transition: width 0.5s cubic-bezier(0.25, 1, 0.5, 1); /* Animate width instead of flex */
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Hover State: Expand */
+.social-card:hover {
+    width: 220px; /* Expand to fixed width */
+    background: var(--clr);
+}
+
+/* Icon Box */
+.social-card .icon-box {
+    min-width: 80px; /* Fixed width for icon area */
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    transition: 0.5s;
+}
+
+.social-card i {
+    font-size: 24px;
+    color: var(--clr); /* Icon is colored initially */
+    transition: 0.5s;
+}
+
+.social-card:hover i {
+    color: #fff; /* Icon turns white on hover */
+    transform: scale(1.2);
+}
+
+/* Content (Text) */
+.social-card .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: 0.4s;
+    white-space: nowrap; /* Prevent text wrapping */
+    padding-right: 20px;
+}
+
+.social-card:hover .content {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0.2s; /* Wait for expansion */
+}
+
+.social-card h3 {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.social-card p {
+    color: rgba(255,255,255,0.8);
+    font-size: 12px;
+}
+
+/* Specific tweak for white button (GitHub) text color */
+.social-card[style*="#ffffff"]:hover h3,
+.social-card[style*="#ffffff"]:hover p,
+.social-card[style*="#ffffff"]:hover i {
+    color: #000;
+}

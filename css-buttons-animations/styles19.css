@@ -1,0 +1,71 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f0f0f0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.social-container {
+    display: flex;
+    gap: 40px;
+}
+
+.social-btn a {
+    text-decoration: none;
+    color: #333;
+}
+
+.social-btn .layer {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    transition: 0.5s;
+    transform-style: preserve-3d;
+    transform: rotate(-30deg) skew(25deg);
+}
+
+.social-btn:hover .layer {
+    transform: rotate(-30deg) skew(25deg) translate(20px, -20px);
+}
+
+.social-btn .layer span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    transition: 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 30px;
+}
+
+.social-btn:hover .layer span:nth-child(1) { opacity: 0.2; }
+.social-btn:hover .layer span:nth-child(2) { opacity: 0.4; transform: translate(5px, -5px); }
+.social-btn:hover .layer span:nth-child(3) { opacity: 0.6; transform: translate(10px, -10px); }
+.social-btn:hover .layer span:nth-child(4) { opacity: 0.8; transform: translate(15px, -15px); }
+.social-btn:hover .layer span:nth-child(5) { opacity: 1; transform: translate(20px, -20px); }
+
+/* Colors */
+.social-btn:nth-child(1) .layer span { background: #3b5999; }
+.social-btn:nth-child(2) .layer span { background: #55acee; }
+.social-btn:nth-child(3) .layer span { background: #e4405f; }
+
+.social-btn .text {
+    margin-top: 10px;
+    font-weight: 600;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.5s;
+}
+
+.social-btn:hover .text {
+    opacity: 1;
+    transform: translateY(0);
+}
